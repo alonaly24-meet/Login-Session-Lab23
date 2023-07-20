@@ -19,6 +19,9 @@ def home():
 
 	return render_template('home.html')
 
+@app.route('/thanks')
+def thanks():
+    return render_template('thanks.html')
 
 @app.route('/error')
 def error():
