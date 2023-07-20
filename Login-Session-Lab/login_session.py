@@ -6,14 +6,17 @@ app.config['SECRET_KEY'] = 'super-secret-key'
 
 @app.route('/', methods=["GET","POST"]) # What methods are needed?
 def home():
-	q=request.form["quote"]
-	au=request.form["author"]
-	a=request.form["age"]
+	if request.method == 'POST':
+		q=request.form["quote"]
+		au=request.form["author"]
+		a=request.form["age"]
 
-	login_session["quote"]=q
-	login_session["author"]=au
-	login_session["age"]=a
-		
+		login_session["quote"]=q
+		login_session["author"]=au
+		login_session["age"]=a
+
+		return redirect(url_for('thanks'))
+
 	return render_template('home.html')
 
 
